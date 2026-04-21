@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this repository in academic work, please cite it using the metadata below."
+title: "Comparative Multi-Asset Crypto Price Forecasting"
+type: software
+version: 0.1.0
+authors:
+  - family-names: "Marques"
+    given-names: "Bernardo Byrro"
+  - family-names: "Bomfim"
+    given-names: "Eric Moreira"
+  - family-names: "de Oliveira"
+    given-names: "Mauri Aparecido"
+abstract: "Python code for reproducible experiments on multi-asset cryptocurrency price forecasting and directional movement prediction using ARIMA, ETS, LSTM, RNN, and GRU models."
+repository-code: "https://github.com/bernardomarques20820-lab/crypto-price-forecasting"
+url: "https://github.com/bernardomarques20820-lab/crypto-price-forecasting"
+license: "MIT"
+keywords:
+  - "cryptocurrency"
+  - "time series"
+  - "forecasting"
+  - "ARIMA"
+  - "ETS"
+  - "LSTM"
+  - "RNN"
+  - "GRU"
+  - "directional forecasting"
+  - "machine learning"

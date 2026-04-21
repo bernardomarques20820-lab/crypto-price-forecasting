@@ -1,0 +1,9 @@
+matplotlib
+numpy
+pandas
+seaborn
+statsmodels
+yfinance
+
+# Optional dependency group for recurrent neural models:
+# install with `pip install -e .[neural]`

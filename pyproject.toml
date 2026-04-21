@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crypto-price-forecasting"
+version = "0.1.0"
+description = "Academic codebase for multi-asset crypto price forecasting experiments."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "matplotlib",
+  "numpy",
+  "pandas",
+  "seaborn",
+  "statsmodels",
+  "yfinance",
+]
+
+[project.optional-dependencies]
+neural = [
+  "scikit-learn",
+  "tensorflow",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
