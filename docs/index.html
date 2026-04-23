@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Material Suplementar — Previsão de Criptomoedas</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #d1d5db;
+      --accent: #1d4ed8;
+      --accent-soft: #dbeafe;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.25;
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent-soft);
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .meta,
+    .note,
+    .small {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .toc,
+    .section-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .toc ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .toc li {
+      margin: 8px 0;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .figure {
+      background: #fafafa;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 18px 0 22px;
+    }
+
+    .figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      background: white;
+    }
+
+    .figure figcaption {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 16px 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 0.95rem;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 10px 12px;
+      text-align: center;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 700;
+    }
+
+    td:first-child,
+    th:first-child {
+      text-align: left;
+    }
+
+    .subheader-row td {
+      background: #eff6ff;
+      font-style: italic;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .footer {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        padding: 20px 12px 48px;
+      }
+
+      .hero,
+      .toc,
+      .section-card {
+        padding: 18px;
+        border-radius: 12px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <h1>Material Suplementar</h1>
+      <p><strong>Análise Comparativa de Modelos Estatísticos e de Aprendizado de Máquina para Previsão de Preços e Movimentos Direcionais de Criptomoedas</strong></p>
+      <p class="meta">Este material reúne os apêndices completos do trabalho, incluindo resultados detalhados, diagnósticos estatísticos e configurações das redes neurais recorrentes.</p>
+      <p class="small">Observação: para exibir corretamente as figuras, mantenha este arquivo <code>index.html</code> na mesma pasta das imagens referenciadas abaixo.</p>
+    </header>
+
+    <nav class="toc" aria-label="Sumário">
+      <h2>Sumário</h2>
+      <ul>
+        <li><a href="#apendice-a">Apêndice A — Resultados detalhados dos modelos</a></li>
+        <li><a href="#apendice-b">Apêndice B — Diagnósticos estatísticos</a></li>
+        <li><a href="#apendice-c">Apêndice C — Configurações das redes neurais</a></li>
+      </ul>
+    </nav>
+
+    <section id="apendice-a" class="section-card">
+      <h2>Apêndice A — Resultados detalhados dos modelos</h2>
+      <p>Este apêndice apresenta os resultados completos das métricas de avaliação dos modelos analisados, incluindo medidas de erro e acurácia direcional para todos os ativos e horizontes de previsão considerados. Essas informações complementam a análise apresentada na Seção 4, permitindo uma visão mais detalhada do desempenho dos modelos.</p>
+
+      <h3>A.1. Métricas completas de avaliação</h3>
+      <p>A tabela a seguir apresenta os sete melhores resultados para cada horizonte de previsão, ordenados com base no MAPE, além dos valores completos das métricas RMSE, MAE, MAPE, sMAPE, Theil U1 e Theil U2 para cada combinação de ativo, horizonte de previsão e modelo.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Ativo</th>
+              <th>Horizonte</th>
+              <th>Modelo</th>
+              <th>RMSE</th>
+              <th>MAE</th>
+              <th>MAPE</th>
+              <th>sMAPE</th>
+              <th>U1</th>
+              <th>U2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="subheader-row"><td colspan="9">Horizonte = 1 dia</td></tr>
+            <tr><td>BTC-USD</td><td>1</td><td>ARIMA</td><td>1.605,29</td><td>1.069,16</td><td>1,81</td><td>1,82</td><td>0,0135</td><td>0,9991</td></tr>
+            <tr><td>ETH-USD</td><td>1</td><td>ARIMA</td><td>90,32</td><td>60,06</td><td>2,14</td><td>2,14</td><td>0,0162</td><td>1,0030</td></tr>
+            <tr><td>XRP-USD</td><td>1</td><td>ARIMA</td><td>0,05</td><td>0,02</td><td>2,45</td><td>2,47</td><td>0,0283</td><td>0,9931</td></tr>
+            <tr><td>LTC-USD</td><td>1</td><td>ARIMA</td><td>3,18</td><td>1,97</td><td>2,46</td><td>2,45</td><td>0,0205</td><td>0,9992</td></tr>
+            <tr><td>LTC-USD</td><td>1</td><td>GRU</td><td>3,62</td><td>2,37</td><td>3,03</td><td>2,98</td><td>0,0232</td><td>1,1380</td></tr>
+            <tr><td>XRP-USD</td><td>1</td><td>GRU</td><td>0,08</td><td>0,03</td><td>3,08</td><td>3,14</td><td>0,0522</td><td>1,7790</td></tr>
+            <tr><td>BTC-USD</td><td>1</td><td>ETS</td><td>2.830,08</td><td>1.921,67</td><td>3,21</td><td>3,24</td><td>0,0239</td><td>1,7615</td></tr>
+
+            <tr class="subheader-row"><td colspan="9">Horizonte = 7 dias</td></tr>
+            <tr><td>BTC-USD</td><td>7</td><td>ARIMA</td><td>4.171,65</td><td>2.977,99</td><td>5,11</td><td>5,19</td><td>0,0352</td><td>1,0000</td></tr>
+            <tr><td>BTC-USD</td><td>7</td><td>GRU</td><td>4.753,86</td><td>3.381,36</td><td>5,73</td><td>5,80</td><td>0,0405</td><td>1,1396</td></tr>
+            <tr><td>BTC-USD</td><td>7</td><td>ETS</td><td>4.876,76</td><td>3.391,01</td><td>5,79</td><td>5,92</td><td>0,0413</td><td>1,1691</td></tr>
+            <tr><td>ETH-USD</td><td>7</td><td>ARIMA</td><td>244,85</td><td>176,27</td><td>6,23</td><td>6,26</td><td>0,0440</td><td>1,0003</td></tr>
+            <tr><td>ETH-USD</td><td>7</td><td>GRU</td><td>243,52</td><td>176,20</td><td>6,25</td><td>6,31</td><td>0,0440</td><td>0,9949</td></tr>
+            <tr><td>ETH-USD</td><td>7</td><td>RNN</td><td>230,60</td><td>173,19</td><td>6,27</td><td>6,21</td><td>0,0413</td><td>0,9421</td></tr>
+            <tr><td>LTC-USD</td><td>7</td><td>GRU</td><td>8,13</td><td>5,29</td><td>6,49</td><td>6,57</td><td>0,0530</td><td>1,0114</td></tr>
+
+            <tr class="subheader-row"><td colspan="9">Horizonte = 14 dias</td></tr>
+            <tr><td>BTC-USD</td><td>14</td><td>ARIMA</td><td>6.114,19</td><td>4.362,83</td><td>7,36</td><td>7,62</td><td>0,0518</td><td>1,0003</td></tr>
+            <tr><td>BTC-USD</td><td>14</td><td>ETS</td><td>6.689,57</td><td>4.729,43</td><td>7,95</td><td>8,27</td><td>0,0569</td><td>1,0944</td></tr>
+            <tr><td>LTC-USD</td><td>14</td><td>ARIMA</td><td>10,81</td><td>7,25</td><td>8,85</td><td>8,88</td><td>0,0702</td><td>0,9999</td></tr>
+            <tr><td>ETH-USD</td><td>14</td><td>GRU</td><td>335,78</td><td>249,94</td><td>8,85</td><td>9,00</td><td>0,0608</td><td>0,9728</td></tr>
+            <tr><td>LTC-USD</td><td>14</td><td>ETS</td><td>11,38</td><td>7,47</td><td>9,08</td><td>9,14</td><td>0,0741</td><td>1,0528</td></tr>
+            <tr><td>ETH-USD</td><td>14</td><td>ARIMA</td><td>345,25</td><td>260,89</td><td>9,08</td><td>9,21</td><td>0,0621</td><td>1,0003</td></tr>
+            <tr><td>ETH-USD</td><td>14</td><td>LSTM</td><td>337,77</td><td>263,69</td><td>9,65</td><td>9,51</td><td>0,0602</td><td>0,9786</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="note"><strong>Nota:</strong> Apenas os sete melhores resultados por horizonte, segundo o MAPE, são apresentados. As demais combinações avaliadas seguem padrões semelhantes.</p>
+
+      <h3>A.2. Acurácia direcional detalhada</h3>
+      <p>A tabela a seguir apresenta os dez melhores resultados completos da acurácia direcional, incluindo número de observações e decomposição por direção. Observa-se predominância de modelos baseados em redes neurais recorrentes entre os melhores desempenhos, com destaque para o modelo GRU no horizonte de 14 dias para o ativo ETH-USD.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Ativo</th>
+              <th>Horizonte</th>
+              <th>Modelo</th>
+              <th>N</th>
+              <th>Acurácia</th>
+              <th>Hit (Alta)</th>
+              <th>Hit (Baixa)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>ETH-USD</td><td>14</td><td>GRU</td><td>509</td><td>0,61</td><td>0,64</td><td>0,57</td></tr>
+            <tr><td>ETH-USD</td><td>7</td><td>RNN</td><td>516</td><td>0,59</td><td>0,85</td><td>0,32</td></tr>
+            <tr><td>ETH-USD</td><td>14</td><td>RNN</td><td>509</td><td>0,59</td><td>0,96</td><td>0,21</td></tr>
+            <tr><td>ETH-USD</td><td>14</td><td>LSTM</td><td>509</td><td>0,58</td><td>0,79</td><td>0,38</td></tr>
+            <tr><td>LTC-USD</td><td>7</td><td>RNN</td><td>516</td><td>0,57</td><td>0,53</td><td>0,61</td></tr>
+            <tr><td>BTC-USD</td><td>7</td><td>GRU</td><td>516</td><td>0,57</td><td>0,60</td><td>0,53</td></tr>
+            <tr><td>BTC-USD</td><td>7</td><td>RNN</td><td>516</td><td>0,57</td><td>0,53</td><td>0,62</td></tr>
+            <tr><td>BTC-USD</td><td>14</td><td>RNN</td><td>509</td><td>0,57</td><td>0,48</td><td>0,70</td></tr>
+            <tr><td>LTC-USD</td><td>7</td><td>ETS</td><td>516</td><td>0,56</td><td>0,53</td><td>0,58</td></tr>
+            <tr><td>LTC-USD</td><td>7</td><td>GRU</td><td>516</td><td>0,55</td><td>0,23</td><td>0,87</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="note"><strong>Nota:</strong> A acurácia direcional considera a proporção total de previsões corretas, incluindo movimentos de alta e de baixa. As métricas <em>Hit (Alta)</em> e <em>Hit (Baixa)</em> representam, respectivamente, as taxas de acerto condicionadas aos movimentos reais de alta e de baixa. O termo <em>N</em> corresponde ao número total de observações consideradas no conjunto de teste.</p>
+    </section>
+
+    <section id="apendice-b" class="section-card">
+      <h2>Apêndice B — Diagnósticos estatísticos</h2>
+
+      <h3>B.1. Testes de estacionariedade</h3>
+      <p>As figuras a seguir apresentam as séries de preços no nível e após a primeira diferenciação para cada criptomoeda analisada. Observa-se visualmente a não-estacionariedade das séries no nível, caracterizada pela presença de tendência, e a estabilização após a diferenciação.</p>
+
+      <figure class="figure">
+        <img src="price_fig_series_diff_BTC_USD.png" alt="Série de preços no nível e primeira diferença — BTC-USD" />
+        <figcaption>Figura B.1. Série de preços no nível e primeira diferença — BTC-USD</figcaption>
+      </figure>
+
+      <figure class="figure">
+        <img src="price_fig_series_diff_ETH_USD.png" alt="Série de preços no nível e primeira diferença — ETH-USD" />
+        <figcaption>Figura B.2. Série de preços no nível e primeira diferença — ETH-USD</figcaption>
+      </figure>
+
+      <figure class="figure">
+        <img src="price_fig_series_diff_XRP_USD.png" alt="Série de preços no nível e primeira diferença — XRP-USD" />
+        <figcaption>Figura B.3. Série de preços no nível e primeira diferença — XRP-USD</figcaption>
+      </figure>
+
+      <figure class="figure">
+        <img src="price_fig_series_diff_LTC_USD.png" alt="Série de preços no nível e primeira diferença — LTC-USD" />
+        <figcaption>Figura B.4. Série de preços no nível e primeira diferença — LTC-USD</figcaption>
+      </figure>
+
+      <p>A tabela abaixo apresenta os p-valores dos testes ADF e KPSS aplicados às séries no nível e em primeira diferença. Para Litecoin (LTC-USD) e Ripple (XRP-USD), observa-se divergência entre os testes ADF e KPSS no nível, com ambos rejeitando suas respectivas hipóteses nulas. Esse padrão é comumente observado em séries com forte persistência estatística, mas sem raiz unitária clara. Por padronização metodológica entre os ativos analisados, adotou-se <code>d = 1</code> para todas as séries.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Ativo</th>
+              <th>ADF (nível)</th>
+              <th>KPSS (nível)</th>
+              <th>ADF (diff)</th>
+              <th>KPSS (diff)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>BTC-USD</td><td>0,9228</td><td>0,010</td><td>0,000</td><td>0,100</td></tr>
+            <tr><td>ETH-USD</td><td>0,6181</td><td>0,010</td><td>0,000</td><td>0,100</td></tr>
+            <tr><td>LTC-USD</td><td>0,0131</td><td>0,049</td><td>0,000</td><td>0,100</td></tr>
+            <tr><td>XRP-USD</td><td>0,0036</td><td>0,022</td><td>0,000</td><td>0,100</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="note"><strong>Nota:</strong> Para o ADF, <em>p &lt; 0,05</em> rejeita a hipótese de raiz unitária. Para o KPSS, <em>p &lt; 0,05</em> rejeita a hipótese de estacionariedade. Todas as séries são estacionárias após a primeira diferenciação.</p>
+
+      <h3>B.2. Diagnóstico dos resíduos do ARIMA</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Ativo</th>
+              <th>Ordem</th>
+              <th>AIC</th>
+              <th>LB(10) p</th>
+              <th>LB(20) p</th>
+              <th>ARCH-LM p</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>BTC-USD</td><td>(1,1,0)</td><td>44.088,47</td><td>0,002</td><td>0,000</td><td>0,000</td></tr>
+            <tr><td>ETH-USD</td><td>(2,1,2)</td><td>30.185,66</td><td>0,034</td><td>0,015</td><td>0,000</td></tr>
+            <tr><td>LTC-USD</td><td>(1,1,1)</td><td>17.690,65</td><td>0,000</td><td>0,000</td><td>0,000</td></tr>
+            <tr><td>XRP-USD</td><td>(1,1,1)</td><td>-7.926,55</td><td>0,000</td><td>0,000</td><td>0,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="note"><strong>Nota:</strong> Os p-valores do Ljung-Box referem-se às defasagens <em>m = {10, 20}</em>. O ARCH-LM foi aplicado com 10 defasagens. Todas as ordens foram selecionadas por AIC no grid <em>p, q ∈ {0, 1, 2}</em> com <em>d = 1</em>. Ambos os testes rejeitam ao nível de 5%, indicando presença de autocorrelação residual e heterocedasticidade condicional, padrão esperado em séries financeiras.</p>
+    </section>
+
+    <section id="apendice-c" class="section-card">
+      <h2>Apêndice C — Configurações das redes neurais</h2>
+      <p>A tabela abaixo apresenta a configuração completa de arquitetura e treinamento utilizada para as redes neurais recorrentes. A mesma configuração foi adotada para as três arquiteturas, variando apenas o tipo de célula recorrente, de forma a isolar o efeito dessa escolha na comparação.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Hiperparâmetro</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Janela de entrada (look-back)</td><td>60 passos</td></tr>
+            <tr><td>Camada recorrente 1 (unidades)</td><td>64</td></tr>
+            <tr><td>Camada recorrente 2 (unidades)</td><td>32</td></tr>
+            <tr><td>Dropout entre camadas recorrentes</td><td>0,2</td></tr>
+            <tr><td>Camada densa intermediária</td><td>16 neurônios (ReLU)</td></tr>
+            <tr><td>Camada de saída</td><td>1 neurônio (linear)</td></tr>
+            <tr><td>Otimizador</td><td>Adam</td></tr>
+            <tr><td>Taxa de aprendizado</td><td>10<sup>-3</sup></td></tr>
+            <tr><td>Função de perda</td><td>MSE</td></tr>
+            <tr><td>Épocas de treinamento</td><td>20</td></tr>
+            <tr><td>Batch size</td><td>32</td></tr>
+            <tr><td>Seed</td><td>42</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Material suplementar elaborado a partir dos apêndices do trabalho. Para publicação via GitHub Pages, salve este arquivo como <code>docs/index.html</code> e coloque as imagens na mesma pasta <code>docs/</code>.</p>
+    </footer>
+  </div>
+</body>
+</html>
